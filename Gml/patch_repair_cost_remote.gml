@@ -1,0 +1,1 @@
+price = math_round(base_price * _durable_price * _stack_mod); if (instance_exists(o_skill_repair_item_master) && image_alpha == 1 && _maxDuration > 0 && _duration < _maxDuration) repair_cost = max(1, math_round((0.35 + (0.05 * Tier)) * (1 - (_duration / _maxDuration)) * base_price * 0.5));

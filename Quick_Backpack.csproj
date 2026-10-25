@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>Quick_Backpack</AssemblyName>
+    <RootNamespace>Quick_Backpack</RootNamespace>
+    <Nullable>disable</Nullable>
+    <!-- The packager ignores this csproj; it is only for IDE compilation.
+         打包器不读 csproj；这里只用于 IDE 编译。
+         Convention: keep ImplicitUsings disabled and never use System.Linq explicitly.
+         约定：不要开 ImplicitUsings，也不要显式 using System.Linq。
+         Otherwise the mod binds to System.Linq, Version=10.0.0.0 (net10 LINQ), and the
+         stock MSL (net6.0) throws FileNotFoundException when loading it.
+         否则 mod 会被绑定到 System.Linq, Version=10.0.0.0（net10 的 LINQ），
+         原版 MSL 是 net6.0 进程，加载时找不到该程序集会报 FileNotFoundException。
+         Only use netstandard base APIs (List<T>, string.Join, foreach, etc.).
+         只用 netstandard 基础 API（List<T>、string.Join、foreach 等）。 -->
+    <ImplicitUsings>disable</ImplicitUsings>
+  </PropertyGroup>
+
+  <!-- Bundled references so the project builds out of the box after a clone (no launcher install needed).
+       内置引用 DLL，克隆后可直接编译（无需预装启动器）。 -->
+  <ItemGroup>
+    <Reference Include="ModShardLauncher">
+      <HintPath>$(MSBuildThisFileDirectory)lib\ModShardLauncher.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UndertaleModLib">
+      <HintPath>$(MSBuildThisFileDirectory)lib\UndertaleModLib.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
